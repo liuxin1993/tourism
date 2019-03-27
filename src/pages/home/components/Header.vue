@@ -7,24 +7,31 @@
 			<span class="iconfont header-search">&#xe632;</span>
 			请输入城市、景点
 		</div>
-		<div class="header-r">
-			城市
-			<span class="iconfont header-down">&#xe6aa;</span>
-		</div>
+		<router-link to="/list">
+			<div class="header-r">
+				{{this.city}}
+				<span class="iconfont header-down">&#xe6aa;</span>
+			</div>
+		</router-link>
 	</div>
 </template>
 
 <script>
+	import { mapState } from 'vuex'
 	export default {
-		name:'HomeHeader'
+		name:'HomeHeader',
+		computed:{
+			...mapState(['city'])
+		}
 	}
 </script>
 
 <style lang="stylus" scoped>
+	@import '~styles/public.styl'
 	.header
 		height:.86rem
 		line-height:.86rem
-		background:#00bcd4
+		background:$backgroundColor
 		color:#fff
 		text-align:center
 		display:flex
@@ -34,8 +41,10 @@
 			.header-back
 				font-size:.38rem
 		.header-r
-			width:1.4rem
+			min-width:1.2rem
+			padding:0 .1rem
 			float:right
+			color:#fff
 			.header-down
 				margin-left:-.04rem
 				font-size:.3rem
